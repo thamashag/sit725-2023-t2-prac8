@@ -22,7 +22,8 @@ async function runDBConnection() {
     try {
         await client.connect();
         collection = client.db().collection('Cat');
-        console.log(collection);
+        //console.log(collection);
+        console.log('MongoDB started')
     } catch(ex) {
         console.error(ex);
     }
@@ -36,6 +37,7 @@ app.get('/api/cats', (req,res) => {
     getAllCats((err,result)=>{
         if (!err) {
             res.json({statusCode:200, data:result, message:'get all cats successful'});
+            console.log('Get all cats');
         }
     });
 });
