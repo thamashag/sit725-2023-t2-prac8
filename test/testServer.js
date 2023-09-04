@@ -1,6 +1,11 @@
 const { expect } = require("chai");
 const request = require("request");
-let cat;
+let cat = {
+    title: '',
+    subTitle: '',
+    path: '',
+    description: ''
+};
 
 describe('Test GET API', function(){
     it('should return a statusCode of 200', function(done){
@@ -14,11 +19,18 @@ describe('Test GET API', function(){
 
 describe('Test POST API', function(){
     it('should return a statusCode of 200', function(done){
-        const cat = { title: 'cat6', subtitle: 'cat', path: 'images/kitten-2.jpg', description: 'cat'};
-
         request.post({ url: 'http://localhost:3000/api/cat', form: cat }, function(error, response, body){
             // Check the status code
             expect(response.statusCode).to.equal(200);
+            done();
+        });
+    });
+});
+
+describe('Test DELETE API', function(){
+    it('should delete a cat', function(done){
+        request.delete({ url: 'http://localhost:3000/api/cat', form: cat }, function(error, response, body){
+            // Check the status code
             done();
         });
     });
