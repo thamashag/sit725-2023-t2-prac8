@@ -45,6 +45,12 @@ function getAllCats(){
     });
 }
 
+let socket = io();
+socket.on('number', (message)=>{
+    console.log('The number is: ' + message);
+
+});
+
 $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('#formSubmit').click(()=>{
